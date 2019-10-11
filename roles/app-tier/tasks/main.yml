@@ -7,7 +7,7 @@
 
 - name: create tomcat root directory
   file:
-    path: 
+    path: "{{ web_root }}"
     state: directory
 
 - name: start and enable tomcat at reboot
