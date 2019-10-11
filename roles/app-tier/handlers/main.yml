@@ -1,7 +1,7 @@
 ---
 # handlers file for app-tier
-- name: restart httpd
+- name: restart tomcat
   service:
-    name: httpd
+    name: tomcat
     state: restarted
 
