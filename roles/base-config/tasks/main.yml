@@ -3,12 +3,6 @@
   - name: Run yum clean
     shell: yum clean all
 
-  - name: Enable internal repos
-    get_url:
-      url: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
-      dest: /etc/yum.repos.d/internal.repo
-      mode: 0644
-
   - name: Install EPEL repos 
     yum:
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
