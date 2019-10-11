@@ -1,20 +1,25 @@
 ---
 # tasks file for app-tier
-- name: install httpd
+- name: install tomcat
   yum:
-    name: httpd
+    name: tomcat
     state: latest
 
-- name: start and enable httpd at reboot
+- name: create tomcat root directory
+  file:
+    path: 
+    state: directory
+
+- name: start and enable tomcat at reboot
   service:
-    name: httpd
+    name: tomcat
     state: started
     enabled: yes
 
 - name: Create index file
   template:
     src: index.html.j2
-    dest: "{{ web_root }}//index.html"
+    dest: "{{ web_root }}/index.html"
     mode: 0644
   notify: restart httpd
     
