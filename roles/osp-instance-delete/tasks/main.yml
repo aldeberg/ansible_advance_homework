@@ -2,10 +2,9 @@
 # tasks file for roles/osp-instance-delete
 #  - name: Fetch Instance Info  -- will be done as part of osp-facts
   - name: Delete instances
-      os_server:
+    os_server:
       cloud: ospcloud
       name: "{{ item.key }}"
       state: absent
       delete_fip: true
     with_dict: "{{ osp_servers }}"
-   
