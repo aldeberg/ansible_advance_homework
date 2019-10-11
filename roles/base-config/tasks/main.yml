@@ -1,2 +1,12 @@
 ---
 # tasks file for base-config
+  - name: enable internal repos
+    get_url:
+      url: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
+      dest: /etc/yum.repos.d/internal.repo
+      mode: 0644
+
+  - name: install python pip
+    yum:
+      name: python-pip
+      state: latest

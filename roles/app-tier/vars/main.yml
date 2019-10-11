@@ -1,2 +1,3 @@
 ---
 # vars file for app-tier
+web_root: /var/www/html
