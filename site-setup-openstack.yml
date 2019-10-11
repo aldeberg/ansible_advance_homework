@@ -7,11 +7,8 @@
        name: "workstation-{{OSP_GUID}}.rhpds.opentlc.com"
        group: workstation
 
-
 - hosts: workstation
   become: yes
   roles:
     - setup-openstack
-
-
-
+    

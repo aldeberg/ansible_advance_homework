@@ -12,6 +12,3 @@
   become: yes
   roles:
     - setup-workstation
-
-- import_playbook: site-install-isolated-node.yml 
-
