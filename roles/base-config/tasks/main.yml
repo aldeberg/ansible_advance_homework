@@ -1,9 +1,9 @@
 ---
-# tasks file for base-config
-  - name: yum clean
+# tasks file for base-config. yum clean cannot be used with yum module as per ansible documentation
+  - name: Run yum clean
     shell: yum clean all
 
-  - name: enable internal repos
+  - name: Enable internal repos
     get_url:
       url: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
       dest: /etc/yum.repos.d/internal.repo
@@ -14,7 +14,7 @@
       name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       state: present 
 
-  - name: install pip
+  - name: Install pip
     yum:
       name:
         - python-pip
