@@ -1,7 +1,9 @@
-# Playbook to setup workstation and create osp network, router, SG and ssh keypair
+# Playbook to setup workstation, isolated node, setup openstack related components such as flavors, image, etc. and finally configure tower with playbooks, job templates  etc.
 
-- hosts: localhost
+- name: Main Playbook for configuring the environment for Homework Ansible Automation
+  hosts: localhost
   tasks:
+
   - name: Create workstation inventory
     add_host:
        name: "workstation-{{osp_GUID}}.rhpds.opentlc.com"

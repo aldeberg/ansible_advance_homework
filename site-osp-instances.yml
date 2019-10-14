@@ -1,6 +1,5 @@
-# Playbook to create osp servers 
-
-- hosts: workstation
+- name: Playbook to create Open Stack server instances
+  hosts: workstation
   become: yes
   roles:
     - osp-instance-create
