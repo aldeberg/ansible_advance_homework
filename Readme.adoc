@@ -1,4 +1,4 @@
-==== Ansible Tower Config
+==== Ansible Advanced Homework
 
 1. Create 2 Lab environments
   - OPENTLC Automation -> Ansible Advanced - Homework 
@@ -14,10 +14,10 @@
     bastion]# chmod 0400 /root/.ssh/mykey.pem
 
 3. Verify a successful connection to workstation-${OSP_GUID}.rhpds.opentlc.com using ~/.ssh/mykey.pem:
-    [bastion]$ sudo -i
-    [bastion]# ssh -i /root/.ssh/mykey.pem <username-company.com>@workstation-${OSP_GUID}.rhpds.opentlc.com
-    [workstation]$ exit
-    [bastion]#
+    bastion]$ sudo -i
+    bastion]# ssh -i /root/.ssh/mykey.pem <username-company.com>@workstation-${OSP_GUID}.rhpds.opentlc.com
+    workstation]$ exit
+    bastion]#
 
 4. Fork the github repo 
 
@@ -26,18 +26,22 @@
 
 5. edit the environment_setup.sh for following variables
 
+[source,text]
+---
 TOWER_GUID=
 OSP_GUID=
 OPENTLC_LOGIN=prasanna.holla-in.ibm.com
 OPENTLC_PASSWORD=
 GITHUB_REPO=https://github.com/prasanna-holla/ansible_advance_homework
 RH_MAIL_ID=prasanna.holla@in.ibm.com
+---
 
 6. Run the environment_setup script to setup workstation, isolated node, OSP components and configure tower
 
    bastion]# bash environment_setup.sh 
 
 7. Using following credentials log in to Ansible Tower nodes:
+
     URL	- https://tower(1-3).{{TOWER_GUID}}.example.opentlc.com
     Username - Admin
     Password - r3dh4t1!
@@ -51,10 +55,12 @@ RH_MAIL_ID=prasanna.holla@in.ibm.com
 9. Execute "cicd_workflow" by clicking on rocket symbol. This should create QA & Prod environments, deploy 3-tier apps and test them.
 
 10. In bastion server, run grading-script.yml playbook for verifying successful completion of the homework
+
     bastion]# export ANSIBLE_ADVANCE_GUID=<GUID of 3tier lab created using order_svc.sh script>
 	bastion]# export OSP_GUID=<osp guid>
 	bastion]# cd /root/ansible_advance_homework
 	bastion]# ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID}	
+
 
 .List of Playbooks
 [%header,cols=2*]
