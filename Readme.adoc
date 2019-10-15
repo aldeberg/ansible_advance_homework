@@ -54,11 +54,10 @@
 
 10. In bastion server, run grading-script.yml playbook for verifying successful completion of the homework
 
-    bastion]# export ANSIBLE_ADVANCE_GUID=<GUID of 3tier lab created using order_svc.sh script>
-	bastion]# export OSP_GUID=<osp guid>
+    bastion]# export ANSIBLE_ADVANCE_GUID=<GUID of 3tier-lab created using order_svc.sh script>
+    bastion]# export OSP_GUID=<osp guid>    
 	bastion]# cd /root/ansible_advance_homework
-	bastion]# ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID}	
-
+    bastion]# ansible-playbook grading-script.yml -e OSP_GUID=${OSP_GUID} -e ANSIBLE_ADVANCE_GUID=${ANSIBLE_ADVANCE_GUID}
 
 .List of Playbooks
 [%header,cols=2*]
