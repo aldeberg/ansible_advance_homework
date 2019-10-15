@@ -15,7 +15,6 @@
 
 3. Verify a successful connection to workstation-${OSP_GUID}.rhpds.opentlc.com using ~/.ssh/mykey.pem:
 
-    bastion]$ sudo -i
     bastion]# ssh -i /root/.ssh/mykey.pem <username-company.com>@workstation-${OSP_GUID}.rhpds.opentlc.com
     workstation]$ exit
     bastion]#
