@@ -11,31 +11,40 @@
 - hosts: workstation
   gather_facts: false
   tasks:
-  - name: OpenStack servers
+  - name: Get OpenStack servers info
     os_server_facts:
       cloud: ospcloud
       server: 'frontend'
     register: openstack_info
 
-  - name: Curl website
-    command: curl "http://{{item.public_v4}}"
+  - name: Check if QA env is deployed successfully
+    uri: 
+      url: "http://{{item.public_v4}}"
+      return_content: yes
     with_items:
        - "{{ openstack_info.ansible_facts.openstack_servers }}"
     register: webpage
-  - name: Fail
+
+  - debug: var=webpage.stdout
+
+  - name: Fail if 'Ansible has done its job' is not in the page content in QA env
     fail:
     when: "'Ansible' not in webpage.results[0].stdout" 
-
   
 - hosts: localhost
   gather_facts: false
   tasks:
-  - name: Curl website
-    command: curl "http://frontend1.{{ ANSIBLE_ADVANCE_GUID }}.example.opentlc.com"
+  - name: Check if Prod env is deployed successfully
+    uri: 
+      url : "http://frontend1.{{ ANSIBLE_ADVANCE_GUID }}.example.opentlc.com"
+      return_content: yes
     register: webpage
+
   - debug: var=webpage.stdout
-  - name: Fail
+
+  - name: Fail if 'Ansible has done its job' is not in the page content of Prod Env
     fail:
     when: "'Ansible' not in webpage.stdout" 
+
   - name: Success
     debug: msg="Congrats Yours HW Assignment is completed"
